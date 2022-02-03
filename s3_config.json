@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "available_hours": 1
+  },
+  "readonly_credentials": {
+    "aws_access_key_id": "<aws access key id>",
+    "aws_secret_access_key": "<aws secret access key>"
+  },
+  "config": {
+    "region_name": "eu-central-1",
+    "signature_version": "s3v4",
+    "retries": {
+      "max_attempts": 10,
+      "mode": "standard"
+    }
+  },
+  "target": {
+    "bucket": "<bucket-name>",
+    "key": "<path/filename>"
+  }
+}
