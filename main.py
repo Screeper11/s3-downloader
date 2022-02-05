@@ -6,17 +6,14 @@ from botocore.config import Config
 from botocore.exceptions import ClientError
 
 
-def parse_arguments():
+def parse_args():
     import argparse
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--no-open', '-n',
-                        help='disables automatically opening the url in a browser',
+                        help='disable automatically opening the download link in a browser',
                         action='store_true')
-    args = parser.parse_args()
-    no_open_flag = args.no_open
-
-    return no_open_flag
+    return parser.parse_args()
 
 
 def get_download_url():
@@ -60,8 +57,7 @@ def open_url(url):
     webbrowser.open(url)
 
 
-if __name__ == '__main__':
-    no_open_flag = parse_arguments()
+def main(args):
     url = get_download_url()
 
     try:
@@ -71,8 +67,12 @@ if __name__ == '__main__':
         print('Download link:')
     print(url)
 
-    if not no_open_flag:
+    if not args.no_open:
         try:
             open_url(url)
         except:
             pass
+
+
+if __name__ == '__main__':
+    main(parse_args())
